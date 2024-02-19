@@ -9,7 +9,7 @@ device = "cuda" if torch.cuda.is_available() else "cpu"
 model, preprocess = clip.load('ViT-B/32', device)
 
 # Load and preprocess the image
-image_path = "test3.jpg"
+image_path = "backend/test3.jpg"
 image = preprocess(Image.open(image_path)).unsqueeze(0).to(device)
 
 # List of possible objects
@@ -29,3 +29,5 @@ with torch.no_grad():
 # Print top 3 objects
 for value, index in zip(values, indices):
     print(f"{objects[index]}: {value.item():.2f}%")
+    
+    
